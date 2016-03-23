@@ -24,6 +24,10 @@ if(!defined('ABSPATH')) {
 //$dir = plugin_dir_path(__FILE__);
 require_once 'pk_functions.php';
 
+if ( $typenow == 'twitch') {
+    wp_enqueue_style( 'pk-admin-css', plugins_url( 'css/admin-twitch.css', __FILE__ ) );
+}
+
 /**
  * PROGRAMMLOGIK
  */
