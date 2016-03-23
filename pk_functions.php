@@ -74,12 +74,13 @@ function pk_metabox_callback($post) {
  
     <div>
         <div class="pk-meta-row">
-            <div class="pk-meta-th">
+            <div class="pk-meta-th pk-float-left">
                 <label for="twitchname">Twitchname:</label>
             </div>
-            <div class="pk-meta-td">
+            <div class="pk-meta-td pk-float-left">
                 <input type="text" id="twitchname" name="name" value="<?php if(!empty($stored_meta['name'])) echo esc_attr($stored_meta['name'][0]) ?>" />
             </div>
+            <div class="pk-clear-float"></div>
         </div>
 
         <div class="pk-meta-row">
@@ -123,4 +124,22 @@ function pk_save_meta($post_id) {
     if ( isset( $_POST[ 'description' ] ) ) {
     	update_post_meta( $post_id, 'name', sanitize_text_field( $_POST[ 'description' ] ) );
     }
+}
+
+/**
+ * CSS UND JS EINBINDEN
+ */
+function pk_admin_enqueue_scripts() {
+    global $pagenow, $typenow;
+    
+    if ( $typenow == 'twitch') {
+        wp_enqueue_style( 'pk-admin-css', plugins_url( 'css/admin-twitch.css', __FILE__ ) );
+    }
+}
+
+/**
+ * SETTINGS HINZUFÜGEN
+ */
+function pk_create_submenue_entry(){
+    add_submenue_page($parent_slug, $page_title, $menue_title, $capability, $menu_slug, $function);
 }

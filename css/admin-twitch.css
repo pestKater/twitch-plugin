@@ -5,6 +5,27 @@ and open the template in the editor.
 */
 /* 
     Created on : 23.03.2016, 23:50:06
-    Author     : Pesti
+    Author     : Halldor Rolandsson
 */
 
+.pk-float-left {
+    float:left;
+}
+
+.pk-float-right {
+    float:right;
+}
+.pk-clear-float {
+    clear:both;
+}
+
+.pk-meta-row {
+    margin-top: 40px;
+}
+.pk-meta-th label {
+    font-weight: bold;
+    margin-right:20px;
+}
+.pk-meta-td input {
+    width:500px;
+}
