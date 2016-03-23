@@ -22,7 +22,7 @@ if(!defined('ABSPATH')) {
 
 //Problem wegen nicht unixoiden Systems
 //$dir = plugin_dir_path(__FILE__);
-require 'pk_functions.php';
+require_once 'pk_functions.php';
 
 /**
  * PROGRAMMLOGIK
@@ -31,3 +31,8 @@ if(function_exists('pk_register_posttype')) {
     add_action('init', 'pk_register_posttype');
 }
 
+if(function_exists('pk_costum_metabox')) {
+    add_action('add_meta_boxes', 'pk_costum_metabox');
+}
+
+add_action('save_post', 'pk_save_meta');

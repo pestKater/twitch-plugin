@@ -49,15 +49,78 @@ function pk_register_posttype() {
                                     'pages'         => true,
                                     'feeds'         => false
                                 ),
-        'supports'              => array(
-                                    'title',
-                                    'editor',
-                                    'author',
-                                    'custom-fields',
-                                    'thumbnail'
-                                )
+        'supports'              => array('title','thumbnail')
     );
     
     register_post_type('twitch', $args);
 }
 
+/**
+ * COSTUM METABOX
+ * Eigene Metabox (Formularfeld) beim Erstellen des Posts
+ * ToDo: Multilanguage
+ */
+function pk_costum_metabox() {
+    add_meta_box('twitchdata','Streamdaten','pk_metabox_callback');
+}
+
+/**
+ * METABOX CALLBACK
+ */
+function pk_metabox_callback($post) {
+    wp_nonce_field(basename(__FILE__), 'pk_twitch_nounce');
+    $stored_meta = get_post_meta($post->ID);
+    ?>
+ 
+    <div>
+        <div class="pk-meta-row">
+            <div class="pk-meta-th">
+                <label for="twitchname">Twitchname:</label>
+            </div>
+            <div class="pk-meta-td">
+                <input type="text" id="twitchname" name="name" value="<?php if(!empty($stored_meta['name'])) echo esc_attr($stored_meta['name'][0]) ?>" />
+            </div>
+        </div>
+
+        <div class="pk-meta-row">
+            <div class="pk-meta-th">
+                <label for="channel-description">Kanalbeschreibung:</label>
+            </div>
+            <div class="pk-meta-td">
+                <?php
+                    if(!empty($stored_meta['description'])){
+                        $content = esc_attr($stored_meta['description'][0]);
+                    }
+                    $editor = 'channel-description';
+                    $settings = array(
+                        'textarea_rows' => 8,
+                        'media_buttons' => false
+                    );
+
+                    wp_editor($content, $editor, $settings);
+                ?>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+
+/**
+ * DATAHANDLER
+ */
+function pk_save_meta($post_id) {
+    $is_autosave = wp_is_post_autosave( $post_id );
+    $is_revision = wp_is_post_revision( $post_id );
+    $is_valid_nonce = ( isset( $_POST[ 'pk_twitch_nounce' ] ) && wp_verify_nonce( $_POST[ 'pk_twitch_nounce' ], basename( __FILE__ ) ) ) ? 'true' : 'false';
+    // Exits script depending on save status
+    if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
+        return;
+    }
+    
+    if ( isset( $_POST[ 'name' ] ) ) {
+    	update_post_meta( $post_id, 'name', sanitize_text_field( $_POST[ 'name' ] ) );
+    }
+    if ( isset( $_POST[ 'description' ] ) ) {
+    	update_post_meta( $post_id, 'name', sanitize_text_field( $_POST[ 'description' ] ) );
+    }
+}
