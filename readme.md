@@ -23,3 +23,12 @@ Ressources like the Avatar will be dynamicly loaded from Twitch-API
 ```
 `visible=full` is the default-setting
 
+## Licence
+The Twitch-Plugin is released under Creative Commons **CC BY-NC-SA**.
+Feel free to use and modify my code.
+
+## Roadmap
+### Version 1.0
+- [x] Integrate Twitch-Overview 
+- [ ] Integrate Twitch-Stream via hidden Div
+- [ ] Localize the Project
