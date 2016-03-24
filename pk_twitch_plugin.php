@@ -21,10 +21,9 @@ if(!defined('ABSPATH')) {
  */
 
 //Problem wegen nicht unixoiden Systems
-//$dir = plugin_dir_path(__FILE__);
-require_once 'pk_functions.php';
-require_once 'pk_template.php';
-require_once 'pk_shortcode.php';
+require_once plugin_dir_path(__FILE__).'pk_functions.php';
+require_once plugin_dir_path(__FILE__).'pk_template.php';
+require_once plugin_dir_path(__FILE__).'pk_shortcode.php';
 
 
 /**
@@ -37,4 +36,8 @@ add_action('save_post', 'pk_save_meta');
 add_action('wp_enqueue_scripts', 'pk_admin_enqueue_scripts');
 add_action('admin_menu', 'pk_create_submenue_entry');
 
+
+/**
+ * SHORTCODES
+ */
 add_shortcode('twitch_overview', 'pk_twitch_overview');
