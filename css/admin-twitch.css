@@ -29,3 +29,12 @@ and open the template in the editor.
 .pk-meta-td input {
     width:500px;
 }
+
+.pk_offline_avatar_list {
+    display: inline-block;
+    list-style: none !important;
+    
+}
+.pk_offline_avatar {
+    display: inline-block;
+}

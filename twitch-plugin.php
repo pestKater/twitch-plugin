@@ -24,7 +24,7 @@ if(!defined('ABSPATH')) {
 //$dir = plugin_dir_path(__FILE__);
 require_once 'pk_functions.php';
 require_once 'pk_template.php';
-require_once 'pk_shortcode.pho';
+require_once 'pk_shortcode.php';
 
 
 /**
