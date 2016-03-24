@@ -23,6 +23,7 @@ if(!defined('ABSPATH')) {
 //Problem wegen nicht unixoiden Systems
 //$dir = plugin_dir_path(__FILE__);
 require_once 'pk_functions.php';
+require_once 'pk_template.php';
 
 
 /**

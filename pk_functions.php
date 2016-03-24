@@ -65,48 +65,6 @@ function pk_costum_metabox() {
 }
 
 /**
- * METABOX CALLBACK
- */
-function pk_metabox_callback($post) {
-    wp_nonce_field(basename(__FILE__), 'pk_twitch_nounce');
-    $stored_meta = get_post_meta($post->ID);
-    ?>
- 
-    <div>
-        <div class="pk-meta-row">
-            <div class="pk-meta-th pk-float-left">
-                <label for="twitchname">Twitchname:</label>
-            </div>
-            <div class="pk-meta-td pk-float-left">
-                <input type="text" id="twitchname" name="name" value="<?php if(!empty($stored_meta['name'])) echo esc_attr($stored_meta['name'][0]) ?>" />
-            </div>
-            <div class="pk-clear-float"></div>
-        </div>
-
-        <div class="pk-meta-row">
-            <div class="pk-meta-th">
-                <label for="channel-description">Kanalbeschreibung:</label>
-            </div>
-            <div class="pk-meta-td">
-                <?php
-                    if(!empty($stored_meta['description'])){
-                        $content = esc_attr($stored_meta['description'][0]);
-                    }
-                    $editor = 'channel-description';
-                    $settings = array(
-                        'textarea_rows' => 8,
-                        'media_buttons' => false
-                    );
-
-                    wp_editor($content, $editor, $settings);
-                ?>
-            </div>
-        </div>
-    </div>
-    <?php
-}
-
-/**
  * DATAHANDLER
  */
 function pk_save_meta($post_id) {
@@ -141,5 +99,13 @@ function pk_admin_enqueue_scripts() {
  * SETTINGS HINZUFÜGEN
  */
 function pk_create_submenue_entry(){
-    add_submenue_page($parent_slug, $page_title, $menue_title, $capability, $menu_slug, $function);
+    add_submenu_page(
+            'options-general.php', 
+            'Settings: Twitch-Plugin', 
+            'Twitch-Einstellungen', 
+            'manage_options', 
+            'twitch_settings', 
+            'pk_render_settings_page'
+    );
 }
+
