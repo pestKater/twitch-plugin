@@ -16,7 +16,7 @@ function pk_twitch_overview($atts, $content=null) {
     
     if($streams->have_posts()):
         
-        $output = '<link rel="stylesheet" href="https://zockerfurs.de/wp-content/themes/zockerfurs/style.css"><h2>Online</h2>';
+        $output = '<h2>Online</h2>';
         $output_fallback = '<p class="pk_stream_fallback">Im Moment ist kein Streamer online</p>';
         $output_online = '';
         $output_offline = '<h2>Offline</h2><ul class="pk_offline_avatar_list">';
@@ -31,23 +31,24 @@ function pk_twitch_overview($atts, $content=null) {
             if($api->stream != Null):
                 
                 $preview = str_replace('320x180', '240x135', $api->stream->preview->medium);
+                $link = $api->stream->channel->url;
                 
                 $output_online .= '<div class="frontpageVideoFrame">';
                 $output_online .= '<div class="frontpageThumbnail">';
-                $output_online .= '<a href="#">';
+                $output_online .= '<a href="'.$link.'">';
                 $output_online .= '<img src="'.$preview.'">';
                 $output_online .= '</a>';
                 $output_online .= '</div>';
                 $output_online .= '<div class="frontpageAuthorImage">';
-                $output_online .= '<a href="#">';
+                $output_online .= '<a href="'.$link.'">';
                 $output_online .= '<img src="'.$api->stream->channel->logo.'" width="48" height="48">';
                 $output_online .= '</a>';
                 $output_online .= '</div>';
                 $output_online .= '<div class="frontpageVideoFrameText">';
                 $output_online .= '<img src="https://zockerfurs.de/wp-content/uploads/2015/11/thumbnail-lets-play.png" class="frontpageEpisodeIcon">';
-                $output_online .= '<a class="frontPageVideoGame" href="#">'.$api->stream->game.'</a>';
+                $output_online .= '<a class="frontPageVideoGame" href="'.$link.'">'.$api->stream->game.'</a>';
                 $output_online .= '<br>';
-                $output_online .= '<a class="frontpageVideoTitle" href="#">'.$api->stream->channel->status.'</a>';
+                $output_online .= '<a class="frontpageVideoTitle" href="'.$link.'">'.$api->stream->channel->status.'</a>';
                 $output_online .= '</div>';
                 $output_online .= '</div>';
             
