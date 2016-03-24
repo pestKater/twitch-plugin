@@ -8,16 +8,6 @@ and open the template in the editor.
     Author     : Halldor Rolandsson
 */
 
-.pk-float-left {
-    float:left;
-}
-
-.pk-float-right {
-    float:right;
-}
-.pk-clear-float {
-    clear:both;
-}
 
 .pk-meta-row {
     margin-top: 40px;
@@ -31,10 +21,13 @@ and open the template in the editor.
 }
 
 .pk_offline_avatar_list {
-    display: inline-block;
+    display: inline-flex;
     list-style: none !important;
     
 }
 .pk_offline_avatar {
-    display: inline-block;
+    margin:20px;
+}
+.pk_stream_fallback {
+    color:grey;
 }

@@ -34,7 +34,7 @@ require_once 'pk_shortcode.php';
 add_action('init', 'pk_register_posttype');
 add_action('add_meta_boxes', 'pk_costum_metabox');
 add_action('save_post', 'pk_save_meta');
-add_action('admin_enqueue_scripts', 'pk_admin_enqueue_scripts');
+add_action('wp_enqueue_scripts', 'pk_admin_enqueue_scripts');
 add_action('admin_menu', 'pk_create_submenue_entry');
 
 add_shortcode('twitch_overview', 'pk_twitch_overview');
