@@ -89,10 +89,7 @@ function pk_save_meta($post_id) {
  */
 function pk_admin_enqueue_scripts() {
     global $pagenow, $typenow;
-    
-    if ( $typenow == 'twitch') {
         wp_enqueue_style( 'pk-admin-css', plugins_url( 'css/admin-twitch.css', __FILE__ ) );
-    }
 }
 
 /**
