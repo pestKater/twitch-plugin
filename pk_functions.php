@@ -89,20 +89,6 @@ function pk_save_meta($post_id) {
  */
 function pk_admin_enqueue_scripts() {
     global $pagenow, $typenow;
-        wp_enqueue_style( 'pk-admin-css', plugins_url( 'css/admin-twitch.css', __FILE__ ) );
-}
-
-/**
- * SETTINGS HINZUFÜGEN
- */
-function pk_create_submenue_entry(){
-    add_submenu_page(
-            'options-general.php', 
-            'Settings: Twitch-Plugin', 
-            'Twitch-Einstellungen', 
-            'manage_options', 
-            'twitch_settings', 
-            'pk_render_settings_page'
-    );
+        wp_enqueue_style( 'pk-admin-css', plugins_url( 'css/pk-twitch.css', __FILE__ ) );
 }
 

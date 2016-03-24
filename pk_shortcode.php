@@ -33,28 +33,28 @@ function pk_twitch_overview($atts, $content=null) {
                 $preview = str_replace('320x180', '240x135', $api->stream->preview->medium);
                 $link = $api->stream->channel->url;
                 
-                $output_online .= '<div class="frontpageVideoFrame">';
-                $output_online .= '<div class="frontpageThumbnail">';
+                $output_online .= '<div class="pk_VideoFrame">';
+                $output_online .= '<div class="pk_ThumbnailFrame">';
                 $output_online .= '<a href="'.$link.'">';
-                $output_online .= '<img src="'.$preview.'">';
+                $output_online .= '<img class="pk_Thumbnail" src="'.$preview.'">';
                 $output_online .= '</a>';
                 $output_online .= '</div>';
-                $output_online .= '<div class="frontpageAuthorImage">';
+                $output_online .= '<div class="pk_StreamerImage">';
                 $output_online .= '<a href="'.$link.'">';
                 $output_online .= '<img src="'.$api->stream->channel->logo.'" width="48" height="48">';
                 $output_online .= '</a>';
                 $output_online .= '</div>';
-                $output_online .= '<div class="frontpageVideoFrameText">';
-                $output_online .= '<img src="https://zockerfurs.de/wp-content/uploads/2015/11/thumbnail-lets-play.png" class="frontpageEpisodeIcon">';
-                $output_online .= '<a class="frontPageVideoGame" href="'.$link.'">'.$api->stream->game.'</a>';
+                $output_online .= '<div class="pk_VideoFrameText">';
+                $output_online .= '<img src="'.plugins_url('assets/thumbnail-lets-play.png', __FILE__ ).'" class="pk_GameIcon">';
+                $output_online .= '<a class="pk_VideoGame" href="'.$link.'">'.$api->stream->game.'</a>';
                 $output_online .= '<br>';
-                $output_online .= '<a class="frontpageVideoTitle" href="'.$link.'">'.$api->stream->channel->status.'</a>';
+                $output_online .= '<a class="pk_VideoTitle" href="'.$link.'">'.$api->stream->channel->status.'</a>';
                 $output_online .= '</div>';
                 $output_online .= '</div>';
             
             else:
                 $channelapi = json_decode(file_get_contents($api->_links->channel));
-                $output_offline .= '<li class="pk_offline_avatar"><a href="#"><img src="'.$channelapi->logo.'" height="135" width="135"></a></li>'; 
+                $output_offline .= '<li class="pk_offline_avatar"><a href="'.$channelapi->url.'"><img src="'.$channelapi->logo.'" height="135" width="135"></a></li>'; 
             endif;
             
             
