@@ -32,3 +32,8 @@ Feel free to use and modify my code.
 - [x] Integrate Twitch-Overview 
 - [ ] Integrate Twitch-Stream via hidden Div
 - [ ] Localize the Project
+
+### Version 2.0
+- [ ] Configure Let's Play Post-Type
+- [ ] Configure Let's Play Taxonomy
+- [ ] Integrate Let's Play Shortcuts
