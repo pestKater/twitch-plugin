@@ -88,7 +88,7 @@ function pk_save_meta($post_id) {
  * CSS UND JS EINBINDEN
  */
 function pk_admin_enqueue_scripts() {
-    global $pagenow, $typenow;
-        wp_enqueue_style( 'pk-admin-css', plugins_url( 'css/pk-twitch.css', __FILE__ ) );
+        wp_enqueue_style( 'pk_twitch', plugins_url( 'css/pk_twitch.css', __FILE__ ) );
+        wp_enqueue_script('pk_scripts', plugins_url( 'js/pk_scripts.js' , __FILE__ ),array( 'jquery' ));
 }
 

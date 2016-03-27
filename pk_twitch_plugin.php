@@ -34,7 +34,6 @@ add_action('init', 'pk_register_posttype');
 add_action('add_meta_boxes', 'pk_costum_metabox');
 add_action('save_post', 'pk_save_meta');
 add_action('wp_enqueue_scripts', 'pk_admin_enqueue_scripts');
-add_action('admin_menu', 'pk_create_submenue_entry');
 
 
 /**
