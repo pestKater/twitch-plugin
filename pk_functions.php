@@ -35,7 +35,7 @@ function pk_register_posttype() {
         'show_in_menu'          => true,
         'show_in_admin_bar'     => true,
         'menu_position'         => 6,
-        'menu_icon'             => 'dashicons-video-alt3',
+        'menu_icon'             => 'dashicons-video-alt2',
         'can_export'            => true,
         'delete_with_user'      => false,
         'hierachical'           => false,
