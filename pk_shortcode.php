@@ -35,21 +35,24 @@ function pk_twitch_overview($atts, $content=null) {
                 
                 $output_online .= '<div class="pk_VideoFrame">';
                 $output_online .= '<div class="pk_ThumbnailFrame">';
-                $output_online .= '<a href="'.$link.'">';
+                $output_online .= '<a class="pk_show-stream" id="'.$accountname.'" onclick="showLiveStream(this.id)" username="'.$accountname.'">';
                 $output_online .= '<img class="pk_Thumbnail" src="'.$preview.'">';
                 $output_online .= '</a>';
                 $output_online .= '</div>';
                 $output_online .= '<div class="pk_StreamerImage">';
-                $output_online .= '<a href="'.$link.'">';
+                $output_online .= '<a class="pk_show-stream" href="#">';
                 $output_online .= '<img src="'.$api->stream->channel->logo.'" width="48" height="48">';
                 $output_online .= '</a>';
                 $output_online .= '</div>';
                 $output_online .= '<div class="pk_VideoFrameText">';
                 $output_online .= '<img src="'.plugins_url('assets/thumbnail-lets-play.png', __FILE__ ).'" class="pk_GameIcon">';
-                $output_online .= '<a class="pk_VideoGame" href="'.$link.'">'.$api->stream->game.'</a>';
+                $output_online .= '<a class="pk_VideoGame pk_show-stream" href="#">'.$api->stream->game.'</a>';
                 $output_online .= '<br>';
-                $output_online .= '<a class="pk_VideoTitle" href="'.$link.'">'.$api->stream->channel->status.'</a>';
+                $output_online .= '<a class="pk_VideoTitle pk_show-stream" href="#">'.$api->stream->channel->status.'</a>';
                 $output_online .= '</div>';
+                $output_online .= '</div>';
+                
+                $output_online .= '<div id="pk_streampanel-'.$accountname.'" class="pk_streampanel">';
                 $output_online .= '</div>';
             
             else:

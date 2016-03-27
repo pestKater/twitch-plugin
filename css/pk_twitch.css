@@ -28,6 +28,18 @@ and open the template in the editor.
     margin-bottom: 10px;
     height: 135px;
 }
+.pk_streampanel {
+    display:none;
+}
+
+.pk_hidden {
+    display:none;
+}
+
+.pk_displayed {
+    display: block;
+}
+
 .pk_ThumbnailFrame {
     display: inline-block;
     position: absolute;
